@@ -1,4 +1,4 @@
-const schooldb = {
+export const schooldb = {
   "school": {
     "name": "City School",
     "address": "Vehari, Pakistan"

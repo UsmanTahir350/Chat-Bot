@@ -1,6 +1,6 @@
-<template>
+ <template>
   <div class="chatbot">
-    <h1>School Chat Bot</h1>
+    <h1>Chat-Bot</h1>
 
     <div class="chat-box">
       <div v-for="(msg, index) in chatHistory" :key="index" class="chat-line">
@@ -46,7 +46,13 @@ async function sendMessage() {
     const result = await client.chat.completions.create({
       model: "gpt-4o-mini",
         messages: [
-          { role: "system", content: "You are an assistant that matches user queries with tool functions." },
+          { role: "system", content:`Tumhara kaam hai user ke message se yeh decide karna ke kis function kaam karega.
+Yeh available tools hain:
+${toolDescriptions}
+
+Return sirf us function ka exact name likho (e.g. "getStudentInformationByName")
+Agar koi match nahi milta toh likho "none".`
+          },
           { role: "user", content: msg }
         ],
         tools: toolsList.map(tool => ({

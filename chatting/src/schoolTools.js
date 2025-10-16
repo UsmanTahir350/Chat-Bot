@@ -1,4 +1,4 @@
-import schooldb from '@/Assets/school_db.js'
+import { schooldb } from './assets/school_db.js';
 
 const AITool = {
 
